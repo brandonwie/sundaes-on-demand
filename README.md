@@ -33,5 +33,16 @@
   - avoid errors
 
 <img src="./img/entryMockup.jpg" alt="entry mockup" width="250px">
-<img src="./img/orderSummary.jpg" alt="entry mockup" width="250px">
-<img src="./img/thankYou.jpg" alt="entry mockup" width="250px">
+<img src="./img/orderSummary.jpg" alt="order summary" width="250px">
+<img src="./img/thankYou.jpg" alt="thank you page" width="250px">
+
+<br>
+
+## Order Phase State (App-level)
+
+<img src="./img/overview.jpg" alt="order phase state" width="500px">
+
+## Server
+
+- Download from course repo
+-
