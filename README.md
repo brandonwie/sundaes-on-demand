@@ -51,3 +51,9 @@
 - For order, simply generates random order number 😁
 - Server not needed for functional react app testing!
   - use mock-service-worker to mock responses from server
+
+## Set up ESLint and Prettier
+
+- `npm install eslint-plugin-testing-library eslint-plugin-jest-dom`
+- remove `eslintConfig` from `package.json`
+- Create `.eslintrc.json` and add standard config
