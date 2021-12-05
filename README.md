@@ -43,4 +43,11 @@
 ## Server
 
 - Download from course repo
--
+  - [link](https://github.com/bonnie/udemy-TESTING-LIBRARY/tree/master/sundae-server)
+  - Follow instructions in `README.md` to install
+- RESTful API, runs on port 3030
+- For flavors / toppings, just sends static info
+  - In a real app, would come from db
+- For order, simply generates random order number 😁
+- Server not needed for functional react app testing!
+  - use mock-service-worker to mock responses from server
