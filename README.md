@@ -32,9 +32,7 @@
   - ensure functionality
   - avoid errors
 
-<img src="./img/entryMockup.jpg" alt="entry mockup" width="250px">
-<img src="./img/orderSummary.jpg" alt="order summary" width="250px">
-<img src="./img/thankYou.jpg" alt="thank you page" width="250px">
+<img src="./img/entryMockup.jpg" alt="entry mockup" width="250px"><img src="./img/orderSummary.jpg" alt="order summary" width="250px"><img src="./img/thankYou.jpg" alt="thank you page" width="250px">
 
 <br>
 
