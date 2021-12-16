@@ -57,3 +57,18 @@
 - `npm install eslint-plugin-testing-library eslint-plugin-jest-dom`
 - remove `eslintConfig` from `package.json`
 - Create `.eslintrc.json` and add standard config
+
+## Client
+
+- Organize components by pages
+
+  - `test` directory for each page
+  - Jest will find and run any files that ends in `.test.js`
+
+- `src/pages/summary`
+
+  - `OrderSummary.jsx`
+  - `SummaryForm.jsx`
+
+- `src/pages/summary/test`
+  - `SummaryForm.test.jsx`
