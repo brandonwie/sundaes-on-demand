@@ -1,3 +1,5 @@
+import { render, screen, fireEvent } from '@testing-library/react';
+import SummaryForm from '../SummaryForm';
 /*
  * Write tests to ensure that
  ** 1. Checkbox is unchecked by default
@@ -10,3 +12,30 @@
  ** 1. Use mockup for "name" option values
  * Check that tests fail! Red part of red-green testing.
  */
+
+describe('Checkbox functionality', () => {
+  test('Initial conditions', () => {
+    render(<SummaryForm />);
+    const checkbox = screen.getByRole('checkbox', {
+      name: /terms and conditions/i,
+    });
+    expect(checkbox).not.toBeChecked();
+
+    const button = screen.getByRole('button', { name: /confirm order/i });
+    expect(button).toBeDisabled();
+  });
+
+  test('Checkbox enables button on first click and disables on second click', () => {
+    render(<SummaryForm />);
+    const checkbox = screen.getByRole('checkbox', {
+      name: /terms and conditions/i,
+    });
+
+    fireEvent.click(checkbox);
+    const button = screen.getByRole('button', { name: /confirm order/i });
+    expect(button).toBeEnabled();
+
+    fireEvent.click(checkbox);
+    expect(button).toBeDisabled();
+  });
+});
