@@ -72,3 +72,8 @@
 
 - `src/pages/summary/test`
   - `SummaryForm.test.jsx`
+
+### Dec 22, 2021
+
+- Copy base codes for testing (pages/summary/\*)
+- Write test scripts for `SummaryForm.jsx`
