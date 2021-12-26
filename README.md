@@ -77,6 +77,11 @@
 
 ### Notes
 
+#### Mon, Dec 26, 2021
+
+- Simulating Server Response w/ Mock Service worker
+  - intercept network calls, return specified responses
+
 #### Sun, Dec 26, 2021
 
 - Using `userEvent` instead of `fireEvent`

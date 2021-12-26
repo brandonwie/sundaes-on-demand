@@ -46,24 +46,31 @@ describe('Checkbox functionality', () => {
   });
 });
 
-test('popover responds to hover', async () => {
-  render(<SummaryForm />);
-  // popover starts out hidden
-  const nullPopover = screen.queryByText(
-    /no ice cream will actually be delivered/i
-  );
-  expect(nullPopover).not.toBeInTheDocument();
+describe('popover responds to hover', () => {
+  test('Initial condition', async () => {
+    render(<SummaryForm />);
+    // popover starts out hidden
+    const nullPopover = screen.queryByText(
+      /no ice cream will actually be delivered/i
+    );
+    expect(nullPopover).not.toBeInTheDocument();
+  });
 
-  // popover appears upon mouseover of checkbox label
-  const termsAndConditions = screen.getByText(/terms and conditions/i);
-  userEvent.hover(termsAndConditions);
+  test('popover appears on hover, disappears on unhover', async () => {
+    render(<SummaryForm />);
+    // popover appears upon mouseover of checkbox label
+    const termsAndConditions = screen.getByText(/terms and conditions/i);
+    userEvent.hover(termsAndConditions);
 
-  const popover = screen.getByText(/no ice cream will actually be delivered/i);
-  expect(popover).toBeInTheDocument();
+    const popover = screen.getByText(
+      /no ice cream will actually be delivered/i
+    );
+    expect(popover).toBeInTheDocument();
 
-  // popover disappears when we mouse out
-  userEvent.unhover(termsAndConditions);
-  await waitForElementToBeRemoved(() =>
-    screen.queryByText(/no ice cream will actually be delivered/i)
-  );
+    // popover disappears when we mouse out
+    userEvent.unhover(termsAndConditions);
+    await waitForElementToBeRemoved(() =>
+      screen.queryByText(/no ice cream will actually be delivered/i)
+    );
+  });
 });
