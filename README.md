@@ -73,7 +73,23 @@
 - `src/pages/summary/test`
   - `SummaryForm.test.jsx`
 
-### Dec 22, 2021
+---
+
+### Notes
+
+#### Sun, Dec 26, 2021
+
+- Using `userEvent` instead of `fireEvent`
+- Screen Query Methods
+
+  <img src="./img/queryMethods.jpg" alt="query methods" width="500px">
+
+  - [API Queries](https://testing-library.com/docs/dom-testing-library/api-queries/)
+  - [React Testing Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
+  - [Query Guide](https://testing-library.com/docs/guide-which-query/)
+    - Priority: Queries Accessible to Everyone => Semantic Queries => Test IDs(last resort)
+
+#### Wed, Dec 22, 2021
 
 - Copy base codes for testing (pages/summary/\*)
 - Write test scripts for `SummaryForm.jsx`
