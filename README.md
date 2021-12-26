@@ -89,6 +89,10 @@
   - [Query Guide](https://testing-library.com/docs/guide-which-query/)
     - Priority: Queries Accessible to Everyone => Semantic Queries => Test IDs(last resort)
 
+- `not wrapped in act (...)` warning
+  - [article to check](https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning)
+  - `waitForElementToBeRemoved`: async function to check if element is removed
+
 #### Wed, Dec 22, 2021
 
 - Copy base codes for testing (pages/summary/\*)
