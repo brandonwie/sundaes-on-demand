@@ -81,6 +81,8 @@
 
 - Simulating Server Response w/ Mock Service worker
   - intercept network calls, return specified responses
+  - `yarn add --dev msw`
+  - Create handlers => test server => check if server listens => reset after each test
 
 #### Sun, Dec 26, 2021
 
