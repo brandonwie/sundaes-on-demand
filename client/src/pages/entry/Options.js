@@ -25,6 +25,5 @@ export default function Options({ optionType }) {
       imagePath={item.imagePath}
     />
   ));
-
   return <Row>{optionItems}</Row>;
 }

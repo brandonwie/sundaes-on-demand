@@ -75,35 +75,55 @@
 
 ---
 
-### Notes
+## Notes
 
-#### Mon, Dec 26, 2021
+### Mon, Dec 27, 2021
 
-- Simulating Server Response w/ Mock Service worker
+#### Server Error
 
-  - intercept network calls, return specified responses
-  - `yarn add --dev msw`
-  - Create handlers => test server => check if server listens => reset after each test
+- use simple react-bootstrap alert
+  - [Docs](https://react-bootstrap.netlify.app/components/alerts/)
+- Jest Debugging Tools
+  - running only one test file, one test within a file
+- need to import `rest` from msw and `server` from mock server
+  ```javascript
+      server.resetHandlers(
+    rest.get('http://localhost:3030/scoops', (req, res, ctx) =>
+      res(ctx.status(500))
+    ),
+    rest.get('http://localhost:3030/toppings', (req, res, ctx) =>
+      res(ctx.status(500))
+    )
+  ```
 
-- asynchronous tests must use `await`, `findBy`
+### Sun, Dec 26, 2021
 
-#### Sun, Dec 26, 2021
+#### Using `userEvent` instead of `fireEvent`
 
-- Using `userEvent` instead of `fireEvent`
-- Screen Query Methods
+#### Screen Query Methods
 
   <img src="./img/queryMethods.jpg" alt="query methods" width="500px">
 
-  - [API Queries](https://testing-library.com/docs/dom-testing-library/api-queries/)
-  - [React Testing Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
-  - [Query Guide](https://testing-library.com/docs/guide-which-query/)
-    - Priority: Queries Accessible to Everyone => Semantic Queries => Test IDs(last resort)
+- [API Queries](https://testing-library.com/docs/dom-testing-library/api-queries/)
+- [React Testing Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
+- [Query Guide](https://testing-library.com/docs/guide-which-query/)
 
-- `not wrapped in act (...)` warning
-  - [article to check](https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning)
-  - `waitForElementToBeRemoved`: async function to check if element is removed
+  - Priority: Queries Accessible to Everyone => Semantic Queries => Test IDs(last resort)
 
-#### Wed, Dec 22, 2021
+#### `not wrapped in act (...)` warning
+
+- [article to check](https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning)
+- `waitForElementToBeRemoved`: async function to check if element is removed
+
+#### Simulating Server Response w/ Mock Service worker
+
+- intercept network calls, return specified responses
+- `yarn add --dev msw`
+- Create handlers => test server => check if server listens => reset after each test
+
+#### asynchronous tests must use `await`, `findBy`
+
+### Wed, Dec 22, 2021
 
 - Copy base codes for testing (pages/summary/\*)
 - Write test scripts for `SummaryForm.jsx`
