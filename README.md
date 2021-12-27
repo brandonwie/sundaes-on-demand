@@ -95,6 +95,8 @@
       res(ctx.status(500))
     )
   ```
+- `waitFor`
+  - similar to `waitForElementToBeRemoved`, uses when you see `not wrapped in act(...)` warning
 
 ### Sun, Dec 26, 2021
 
