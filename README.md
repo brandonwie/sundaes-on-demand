@@ -77,7 +77,13 @@
 
 ## Notes
 
+### Mon, Jan 10, 2022
+
 ### Mon, Dec 27, 2021
+
+- behavior driven testing
+- use Context
+  - [Kent C. Dodds pattern](https://kentcdodds.com/blog/application-state-management-with-react)
 
 #### Server Error
 
@@ -86,6 +92,7 @@
 - Jest Debugging Tools
   - running only one test file, one test within a file
 - need to import `rest` from msw and `server` from mock server
+
   ```javascript
       server.resetHandlers(
     rest.get('http://localhost:3030/scoops', (req, res, ctx) =>
@@ -95,8 +102,17 @@
       res(ctx.status(500))
     )
   ```
+
 - `waitFor`
   - similar to `waitForElementToBeRemoved`, uses when you see `not wrapped in act(...)` warning
+
+#### Review
+
+- override Mock Service Worker response for individual tests
+- unable to find `role="alert"` error => `waitFor`
+- isolate file by typing `p`
+- `test.only` and `test.skip` to run particular tests
+- `waitFor` for tests where `await findBy*` isn't enough
 
 ### Sun, Dec 26, 2021
 
