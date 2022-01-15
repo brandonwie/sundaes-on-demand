@@ -16,12 +16,10 @@ const OrderDetails = createContext();
 // create custom hook to check whether we're inside a provider
 export function useOrderDetails() {
   const context = useContext(OrderDetails);
-
   // if not inside a provider
   if (!context) {
     throw new Error('useOrderDetails must be within an OrderDetailsProvider');
   }
-
   return context;
 }
 
@@ -31,7 +29,6 @@ function calculateSubtotal(optionType, optionCounts) {
   for (const count of optionCounts[optionType].values()) {
     optionCount += count;
   }
-
   return optionCount * pricePerItem[optionType];
 }
 
@@ -65,7 +62,7 @@ export function OrderDetailsProvider(props) {
 
       // update option count for this item with the new value
       const optionCountsMap = optionCounts[optionType];
-      optionCountsMap.set(itemName, newItemCount);
+      optionCountsMap.set(itemName, parseInt(newItemCount));
 
       setOptionCounts(newOptionCounts);
     }
