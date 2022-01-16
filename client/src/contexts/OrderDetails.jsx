@@ -40,7 +40,7 @@ export function OrderDetailsProvider(props) {
   const zeroCurrency = formatCurrency(0);
   const [totals, setTotals] = useState({
     scoops: zeroCurrency,
-    topping: zeroCurrency,
+    toppings: zeroCurrency,
     grandTotal: zeroCurrency,
   });
 

@@ -30,14 +30,20 @@ it('update scoop subtotal when scoops change', async () => {
 });
 
 // write tests for toppings subtotal
-describe('toppings subtotal', () => {
-  test('assert on default toppings subtotal', async () => {
-    render(<Options optionType={'toppings'} />);
-    const toppingsSubtotal = screen.getByText('Toppings total: $', {
-      exact: false,
-    });
-    expect(toppingsSubtotal).toHaveTextContent('0.00');
+
+it('assert on default toppings subtotal', async () => {
+  render(<Options optionType={'toppings'} />);
+
+  const toppingsTotal = screen.getByText('Toppings total: $', {
+    exact: false,
   });
+  expect(toppingsTotal).toHaveTextContent('0.00');
+
+  const cherriesCheckbox = await screen.findByRole('checkbox', {
+    name: 'Cherries',
+  });
+  userEvent.click(cherriesCheckbox);
+  expect(toppingsTotal).toHaveTextContent('1.50');
 });
 // Assert on default toppins subtotal
 
