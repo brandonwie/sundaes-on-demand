@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { useOrderDetails } from '../../contexts/OrderDetails';
 
 export default function OrderConfirmation({ setOrderPhase }) {
+  // ignore first two items
   const [, , resetOrder] = useOrderDetails;
   const [orderNumber, setOrderNumber] = useState(null);
 
