@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen } from '../../../test-utils/testing-library-utils';
 import Options from '../Options';
+import OrderEntry from '../OrderEntry';
 
 it('update scoop subtotal when scoops change', async () => {
   render(<Options optionType={'scoops'} />);
@@ -33,26 +34,46 @@ it('update scoop subtotal when scoops change', async () => {
 
 it('assert on default toppings subtotal', async () => {
   render(<Options optionType={'toppings'} />);
-
+  // Assert on default toppins subtotal
   const toppingsTotal = screen.getByText('Toppings total: $', {
     exact: false,
   });
   expect(toppingsTotal).toHaveTextContent('0.00');
-
+  // Find and tick on box, assert on updated subtotal
+  // see src/mocks/handlers.js for server response
+  // use await and find for checkbox (async)
   const cherriesCheckbox = await screen.findByRole('checkbox', {
     name: 'Cherries',
   });
   userEvent.click(cherriesCheckbox);
   expect(toppingsTotal).toHaveTextContent('1.50');
+  // Tick another box on, assert on subtotal
+  // Make sure code can handle two simultaneous boxes
+  const mAndMsCheckbox = await screen.findByRole('checkbox', { name: 'M&Ms' });
+  userEvent.click(mAndMsCheckbox);
+  expect(toppingsTotal).toHaveTextContent('3.00');
+
+  const hotFudgeCheckbox = await screen.findByRole('checkbox', {
+    name: 'Hot fudge',
+  });
+  userEvent.click(hotFudgeCheckbox);
+  expect(toppingsTotal).toHaveTextContent('4.50');
+  // Tick one of the boxes off (click it again) and assert on subtotal
+  // make sure code can handle box checked then un-checked
+  // remvoe hot fudge and check subtotal
+  userEvent.click(hotFudgeCheckbox);
+  expect(toppingsTotal).toHaveTextContent('3.00');
 });
-// Assert on default toppins subtotal
 
-// Find and tick on box, assert on updated subtotal
-// see src/mocks/handlers.js for server response
-// use await and find for checkbox (async)
-
-// Tick another box on, assert on subtotal
-// Make sure code can handle two simultaneous boxes
-
-// Tick one of the boxes off (click it again) and assert on subtotal
-// make sure code can handle box checked then un-checked
+describe('grand total', () => {
+  it('grand total starts at $0.00', () => {
+    render(<OrderEntry />);
+    const grandTotal = screen.getByRole('heading', {
+      name: /grand total: \$/i,
+    });
+    expect(grandTotal).toHaveTextContent('$0.00');
+  });
+  it('grand total updates properly if scoop is added first', () => {});
+  it('grand total updates properly if topping is added first', () => {});
+  it('grand total updates properly if item is removed', () => {});
+});

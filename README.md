@@ -77,7 +77,26 @@
 
 ## Notes
 
-### Mon, Jan 16, 2022
+### Sun, Jan 16, 2022
+
+- some questions to consider
+
+  - Should we do a 'black box' test (not consider implementation)?: the answer is 'yes' because we might change implementation later on.
+  - Do test functions need to be `async`?: yes, options still need to load from server / mock service worker
+    - await both the scoop element and another await on the topping element (separate elements)
+
+- grand total should be the same size as titles (\<h2\>)
+- search with `heading` role, include the text in the `name` option
+
+  - `{ exact: false}` is not an option for `*byRole`
+  - either use `*byRole` and regex for `name` option, or `*byText` and `{ exact: false}`
+
+    ```javascript
+    screen.getByRole('heading', { name: /grand total: \$/i }); // a
+    screen.getByText('Grand total: $', { exact: false }); // b
+    ```
+
+### Sat, Jan 15, 2022
 
 - takeaway
 
