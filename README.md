@@ -79,6 +79,16 @@
 
 ### Mon, Jan 16, 2022
 
+- takeaway
+
+  - when `getByText()` set `exact` option to `false` so that we can find partial matches
+  - `await` goes with `findBy`
+  - `input` with `number` requires `spinbutton` role to detect when testing
+  - `userEvent.clear` to clear existing text, `userEvent.type` to enter number
+  - `wrapper` option to `render()` to apply context provider
+    - Better redefine testing library render to access easier
+
+- an error happened while testing using Context because of type error (not using parseInt)
 - Custom Render
 
   ```javascript
