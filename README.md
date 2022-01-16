@@ -79,11 +79,22 @@
 
 ### Sun, Jan 16, 2022
 
-- some questions to consider
+- again... dealing with `Warning: Can't perform a React state update on an unmounted component. This is a no-op ...` error || `Warning: An update to Options inside a test was not wrapped in act(...) ...`
+  - basically it happens if there's an API call occurs(update happens) on mount(in useEffect) of a component
+  - how to resolve it?
+    1. [Skip auto cleanup](https://testing-library.com/docs/react-testing-library/setup/#skipping-auto-cleanup): not possible on a test-by-test basis
+    2. Mock useEffect to bypass server call: Not recommended, farther from production code path
+    3. Include in the beginning of a test that asserts on state changes
+    - One that awaits state changes
+      - happen on axios promise promise resolution
+    - Don't need to include in all tests b/c it only needs to be tested once
 
-  - Should we do a 'black box' test (not consider implementation)?: the answer is 'yes' because we might change implementation later on.
-  - Do test functions need to be `async`?: yes, options still need to load from server / mock service worker
-    - await both the scoop element and another await on the topping element (separate elements)
+#### some questions to consider
+
+- Should we do a 'black box' test (not consider implementation)?: the answer is 'yes' because we might change implementation later on.
+- Do test functions need to be `async`?: yes, options still need to load from server / mock service worker
+
+  - await both the scoop element and another await on the topping element (separate elements)
 
 - grand total should be the same size as titles (\<h2\>)
 - search with `heading` role, include the text in the `name` option
