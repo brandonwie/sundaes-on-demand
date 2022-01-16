@@ -77,7 +77,45 @@
 
 ## Notes
 
+### Mon, Jan 17, 2022
+
+#### Order Confirmation Component
+
+- `orderPhase` is in App-level state => in context
+- `orderPhase` value determines which page component ot display
+- for simplicity, wrap everything in context provider
+  - even though the confirmation page doesn't need it
+- buttons that update `orderPhase` state in pages
+  - button calls setter from props
+- reset context `Map`s after clicking `New Order` button
+  - context needs additional array item `resetOrder`
+- State with `orderNumber`, initial value to `null`
+
+  ```javascript
+  if (orderNumber === null) setLoading(true);
+  ```
+
+- leave error part as TODO
+
+#### Debugging Tips
+
+- `screen.debug()`
+- Does `getBy*` fail when there a server call or other async action?
+  - need to use `await findBy*`
+- Read test error output carefully
+  - exactly which assertion is failing?
+
+#### POSt order to server
+
+- send API call inside useEffect in OrderConfirmation.js
+- sever sends random order number: mimic POST with Mock Service Worker
+
 ### Sun, Jan 16, 2022
+
+- App `orderPhase` State
+
+  - App passes state setter (`setOrderPhase`) to components as prop
+  - Components call `setOrderPhase` to move to next phase
 
 - again... dealing with `Warning: Can't perform a React state update on an unmounted component. This is a no-op ...` error || `Warning: An update to Options inside a test was not wrapped in act(...) ...`
   - basically it happens if there's an API call occurs(update happens) on mount(in useEffect) of a component

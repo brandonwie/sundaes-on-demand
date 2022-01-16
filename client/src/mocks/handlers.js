@@ -19,4 +19,11 @@ export const handlers = [
       ])
     );
   }),
+
+  rest.post('http://localhost:3030/order', (req, res, ctx) => {
+    return res(
+      ctx.status(201),
+      ctx.json({ orderNumber: Math.random() * 10000000000 })
+    );
+  }),
 ];
