@@ -73,7 +73,37 @@ describe('grand total', () => {
     });
     expect(grandTotal).toHaveTextContent('$0.00');
   });
-  it('grand total updates properly if scoop is added first', () => {});
-  it('grand total updates properly if topping is added first', () => {});
-  it('grand total updates properly if item is removed', () => {});
+  it('grand total updates properly if scoop is added first', async () => {
+    render(<OrderEntry />);
+    const vanillaScoop = await screen.findByRole('spinbutton', {
+      name: 'Vanilla',
+    });
+    userEvent.type(vanillaScoop, '1');
+    const grandTotal = screen.getByRole('heading', {
+      name: /grand total: \$/i,
+    });
+    expect(grandTotal).toHaveTextContent('$2.00');
+  });
+  it('grand total updates properly if topping is added first', async () => {
+    render(<OrderEntry />);
+    const cherriesTopping = await screen.findByRole('checkbox', {
+      name: /cherries/i,
+    });
+    userEvent.click(cherriesTopping);
+    const grandTotal = screen.getByText(/grand total:/i, { exact: false });
+    expect(grandTotal).toHaveTextContent('$1.50');
+  });
+  it('grand total updates properly if item is removed', async () => {
+    render(<OrderEntry />);
+    const chocolateScoop = await screen.findByRole('spinbutton', {
+      name: /chocolate/i,
+    });
+    userEvent.clear(chocolateScoop);
+    userEvent.type(chocolateScoop, '2');
+    const grandTotal = screen.getByText('Grand Total:', { exact: false });
+    expect(grandTotal).toHaveTextContent('$4.00');
+    userEvent.clear(chocolateScoop);
+    userEvent.type(chocolateScoop, '0');
+    expect(grandTotal).toHaveTextContent('$0.00');
+  });
 });
