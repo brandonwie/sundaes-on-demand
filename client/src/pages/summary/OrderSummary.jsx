@@ -2,7 +2,7 @@ import React from 'react';
 import SummaryForm from './SummaryForm';
 import { useOrderDetails } from '../../contexts/OrderDetails';
 
-export default function OrderSummary({ setOrderPhase }) {
+function OrderSummary({ setOrderPhase }) {
   const [orderDetails] = useOrderDetails();
 
   const scoopArray = Array.from(orderDetails.scoops.entries());
@@ -26,3 +26,5 @@ export default function OrderSummary({ setOrderPhase }) {
     </div>
   );
 }
+
+export default OrderSummary;
