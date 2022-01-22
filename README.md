@@ -77,6 +77,28 @@
 
 ## Notes
 
+### Sat, Jan 22, 2022
+
+#### passing mock function as a parameter
+
+- jest.fn()
+
+#### Questions to ask
+
+- What to render?
+  - what's the smallest component that encompasses tests?
+- Do we need to pass any props?
+- Do we need to wrap in, say, `OrderDetailsProvider`?
+  - Does the provider get used? Is it already wrapped within the component?
+- Where should the tests go?
+  - which file? New file needed?
+- What to test?
+  - What's the behavior that needs testing?
+- How to test?
+  - What queries and events?
+- Do wee need to `await`?
+  - Is there anything async going on?
+
 ### Mon, Jan 17, 2022
 
 #### Order Confirmation Component
