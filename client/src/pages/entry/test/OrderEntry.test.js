@@ -6,6 +6,7 @@ import {
 import OrderEntry from '../OrderEntry';
 import { rest } from 'msw';
 import { server } from '../../../mocks/server';
+
 // TODO: create custom render to wrap in provider by default
 it('handles error for scoops and toppings routes', async () => {
   server.resetHandlers(
@@ -17,7 +18,7 @@ it('handles error for scoops and toppings routes', async () => {
     )
   );
 
-  render(<OrderEntry />);
+  render(<OrderEntry setOrderPhase={jest.fn()} />);
 
   await waitFor(async () => {
     const alerts = await screen.findAllByRole('alert');

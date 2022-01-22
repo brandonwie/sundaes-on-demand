@@ -118,6 +118,7 @@ test('Toppings header is not on summary page if no toppings ordered', async () =
   });
   userEvent.click(orderSummaryButton);
 
+  // check headings
   const scoopsHeading = screen.getByRole('heading', { name: 'Scoops: $6.00' });
   expect(scoopsHeading).toBeInTheDocument();
 

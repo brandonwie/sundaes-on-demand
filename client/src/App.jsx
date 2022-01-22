@@ -14,13 +14,14 @@ function App() {
     case 'inProgress':
       Component = OrderEntry;
       break;
-    case 'review':
-      Component = OrderSummary;
-      break;
     case 'completed':
       Component = OrderConfirmation;
       break;
+    case 'review':
+      Component = OrderSummary;
+      break;
     default:
+      return;
   }
   return (
     <OrderDetailsProvider>
