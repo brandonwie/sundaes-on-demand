@@ -121,7 +121,7 @@ test('Toppings header is not on summary page if no toppings ordered', async () =
   // check headings
   const scoopsHeading = screen.getByRole('heading', { name: 'Scoops: $6.00' });
   expect(scoopsHeading).toBeInTheDocument();
-
+  // to choose that doesn't exist, use queryBy*
   const toppingsHeading = screen.queryByRole('heading', { name: /toppings/i });
   expect(toppingsHeading).not.toBeInTheDocument();
 });
